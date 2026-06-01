@@ -1,0 +1,87 @@
+2026-06-01 22:44:33,934 — INFO — Logging initialisé — fichier : C:\Users\saadabarra\Documents\Courses\zara-etl\logs\etl_20260601_224433.log
+2026-06-01 22:44:33,935 — INFO — ============================================================
+2026-06-01 22:44:33,935 — INFO — DÉMARRAGE PIPELINE ETL — MEXORA
+2026-06-01 22:44:33,935 — INFO — Mode de chargement : POSTGRES
+2026-06-01 22:44:33,936 — INFO — Date d'exécution   : 2026-06-01 22:44:33
+2026-06-01 22:44:33,936 — INFO — ============================================================
+2026-06-01 22:44:33,936 — INFO — 
+2026-06-01 22:44:33,937 — INFO — --- PHASE EXTRACT ---
+2026-06-01 22:44:34,053 — INFO — [EXTRACT] Commandes : 50000 lignes extraites depuis C:\Users\saadabarra\Documents\Courses\zara-etl\data\commandes_mexora.csv
+2026-06-01 22:44:34,055 — INFO — [EXTRACT] Produits : 57 lignes extraites depuis C:\Users\saadabarra\Documents\Courses\zara-etl\data\produits_mexora.json
+2026-06-01 22:44:34,075 — INFO — [EXTRACT] Clients : 5150 lignes extraites depuis C:\Users\saadabarra\Documents\Courses\zara-etl\data\clients_mexora.csv
+2026-06-01 22:44:34,077 — INFO — [EXTRACT] Régions : 30 lignes extraites depuis C:\Users\saadabarra\Documents\Courses\zara-etl\data\regions_maroc.csv
+2026-06-01 22:44:34,077 — INFO — 
+2026-06-01 22:44:34,078 — INFO — --- PHASE TRANSFORM ---
+2026-06-01 22:44:34,078 — INFO — 
+2026-06-01 22:44:34,078 — INFO — [TRANSFORM] === Nettoyage des commandes ===
+2026-06-01 22:44:34,078 — INFO — [TRANSFORM] Commandes — Début du nettoyage (50000 lignes)
+2026-06-01 22:44:34,097 — INFO — [TRANSFORM] R1 doublons : 1500 lignes supprimées (3.0%)
+2026-06-01 22:44:36,295 — INFO — [TRANSFORM] R2 dates : 0 dates invalides supprimées
+2026-06-01 22:44:39,433 — INFO — [TRANSFORM] Référentiel villes chargé : 75 entrées de correspondance
+2026-06-01 22:44:39,475 — INFO — [TRANSFORM] R3 villes : 28 variantes → 14 villes standardisées (0 non mappées)
+2026-06-01 22:44:39,535 — INFO — [TRANSFORM] R4 statuts : 0 valeurs non reconnues → 'inconnu'
+2026-06-01 22:44:39,558 — INFO — [TRANSFORM] R5 quantités : 458 lignes supprimées (quantité <= 0)
+2026-06-01 22:44:39,579 — INFO — [TRANSFORM] R6 prix : 739 commandes test supprimées (prix = 0)
+2026-06-01 22:44:39,594 — INFO — [TRANSFORM] R7 livreurs : 3216 valeurs manquantes → -1
+2026-06-01 22:44:39,595 — INFO — [TRANSFORM] Commandes : 50000 → 47303 lignes (2697 supprimées au total, 5.4%)
+2026-06-01 22:44:39,595 — INFO — 
+2026-06-01 22:44:39,596 — INFO — [TRANSFORM] === Nettoyage des produits ===
+2026-06-01 22:44:39,596 — INFO — [TRANSFORM] Produits — Début du nettoyage (57 lignes)
+2026-06-01 22:44:39,598 — INFO — [TRANSFORM] R1 catégories : harmonisées en Title Case (4 catégories distinctes)
+2026-06-01 22:44:39,598 — INFO — [TRANSFORM] R2 produits inactifs : 9 produits conservés (marqués inactifs — SCD Type 2)
+2026-06-01 22:44:39,601 — INFO — [TRANSFORM] R3 prix catalogue : 2 valeurs nulles remplacées par la médiane catégorie
+2026-06-01 22:44:39,602 — INFO — [TRANSFORM] Produits : 57 → 57 lignes (aucune suppression)
+2026-06-01 22:44:39,602 — INFO — 
+2026-06-01 22:44:39,602 — INFO — [TRANSFORM] === Nettoyage des clients ===
+2026-06-01 22:44:39,606 — INFO — [TRANSFORM] Référentiel villes chargé : 75 entrées de correspondance
+2026-06-01 22:44:39,606 — INFO — [TRANSFORM] Clients — Début du nettoyage (5150 lignes)
+2026-06-01 22:44:39,619 — INFO — [TRANSFORM] R1 doublons email : 193 lignes supprimées
+2026-06-01 22:44:39,623 — INFO — [TRANSFORM] R2 genre : standardisé (m/f/inconnu), 0 valeurs inconnues
+2026-06-01 22:44:39,633 — INFO — [TRANSFORM] R3 dates naissance : 101 âges invalides (< 16 ou > 100 ans)
+2026-06-01 22:44:39,639 — INFO — [TRANSFORM] R4 emails : 117 emails invalides mis à NULL
+2026-06-01 22:44:39,643 — INFO — [TRANSFORM] R5 villes : harmonisées (0 non mappées)
+2026-06-01 22:44:39,645 — INFO — [TRANSFORM] Clients : 5150 → 4957 lignes (193 supprimées au total)
+2026-06-01 22:44:39,645 — INFO — 
+2026-06-01 22:44:39,645 — INFO — [TRANSFORM] === Construction des dimensions ===
+2026-06-01 22:44:39,714 — INFO — [TRANSFORM] DIM_TEMPS : 2192 jours générés (2020-01-01 → 2025-12-31)
+2026-06-01 22:44:39,717 — INFO — [TRANSFORM] DIM_PRODUIT : 57 produits (dont 9 inactifs)
+2026-06-01 22:44:39,729 — INFO — [TRANSFORM] Segmentation : 751 clients analysés
+2026-06-01 22:44:39,744 — INFO — [TRANSFORM] DIM_CLIENT : 4957 clients
+2026-06-01 22:44:39,746 — INFO — [TRANSFORM] Segments — Gold: 512, Silver: 133, Bronze: 4312
+2026-06-01 22:44:39,748 — INFO — [TRANSFORM] DIM_REGION : 30 régions
+2026-06-01 22:44:39,755 — INFO — [TRANSFORM] DIM_LIVREUR : 51 livreurs (dont 1 inconnu)
+2026-06-01 22:44:39,755 — INFO — 
+2026-06-01 22:44:39,756 — INFO — [TRANSFORM] === Construction de la table de faits ===
+2026-06-01 22:44:40,222 — WARNING — [TRANSFORM] FAIT_VENTES : 1716 lignes sans correspondance dimension supprimées
+2026-06-01 22:44:40,223 — INFO — [TRANSFORM] FAIT_VENTES : 45587 lignes construites
+2026-06-01 22:44:40,224 — INFO — [TRANSFORM] CA total HT  : 1,880,457,594.28 MAD
+2026-06-01 22:44:40,225 — INFO — [TRANSFORM] CA total TTC : 2,256,549,112.80 MAD
+2026-06-01 22:44:40,228 — INFO — 
+2026-06-01 22:44:40,229 — INFO — --- PHASE LOAD ---
+2026-06-01 22:44:40,304 — INFO — [LOAD] Connexion PostgreSQL établie
+2026-06-01 22:44:40,304 — INFO — [INIT] Exécution de create_dwh.sql — création des schémas et tables...
+2026-06-01 22:44:40,543 — INFO — [INIT] Schémas, tables et vues créés avec succès.
+2026-06-01 22:44:41,173 — INFO — [LOAD] dim_temps : 2192 lignes chargées dans dwh_mexora.dim_temps
+2026-06-01 22:44:41,204 — INFO — [LOAD] dim_produit : 57 lignes chargées dans dwh_mexora.dim_produit
+2026-06-01 22:44:42,669 — INFO — [LOAD] dim_client : 4957 lignes chargées dans dwh_mexora.dim_client
+2026-06-01 22:44:42,686 — INFO — [LOAD] dim_region : 30 lignes chargées dans dwh_mexora.dim_region
+2026-06-01 22:44:42,706 — INFO — [LOAD] dim_livreur : 51 lignes chargées dans dwh_mexora.dim_livreur
+2026-06-01 22:44:44,509 — INFO — [LOAD] fait_ventes : 5000/45587 lignes chargées
+2026-06-01 22:44:46,388 — INFO — [LOAD] fait_ventes : 10000/45587 lignes chargées
+2026-06-01 22:44:48,303 — INFO — [LOAD] fait_ventes : 15000/45587 lignes chargées
+2026-06-01 22:44:50,086 — INFO — [LOAD] fait_ventes : 20000/45587 lignes chargées
+2026-06-01 22:44:52,674 — INFO — [LOAD] fait_ventes : 25000/45587 lignes chargées
+2026-06-01 22:44:55,340 — INFO — [LOAD] fait_ventes : 30000/45587 lignes chargées
+2026-06-01 22:44:57,498 — INFO — [LOAD] fait_ventes : 35000/45587 lignes chargées
+2026-06-01 22:44:59,335 — INFO — [LOAD] fait_ventes : 40000/45587 lignes chargées
+2026-06-01 22:45:01,207 — INFO — [LOAD] fait_ventes : 45000/45587 lignes chargées
+2026-06-01 22:45:01,419 — INFO — [LOAD] fait_ventes : 45587/45587 lignes chargées
+2026-06-01 22:45:01,419 — INFO — [LOAD] fait_ventes : chargement terminé (45587 lignes)
+2026-06-01 22:45:01,419 — INFO — 
+2026-06-01 22:45:01,420 — INFO — ============================================================
+2026-06-01 22:45:01,420 — INFO — PIPELINE ETL MEXORA — TERMINÉ AVEC SUCCÈS
+2026-06-01 22:45:01,420 — INFO — Durée totale       : 27.5 secondes
+2026-06-01 22:45:01,420 — INFO — Dimensions chargées: 5
+2026-06-01 22:45:01,421 — INFO — Lignes FAIT_VENTES : 45,587
+2026-06-01 22:45:01,422 — INFO — CA total TTC       : 2,256,549,112.80 MAD
+2026-06-01 22:45:01,422 — INFO — ============================================================

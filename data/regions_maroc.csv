@@ -1,0 +1,31 @@
+code_ville,nom_ville_standard,province,region_admin,zone_geo,population,code_postal
+TNG,Tanger,Tanger-Assilah,Tanger-Tétouan-Al Hoceïma,Nord,1065601,90000
+TET,Tétouan,Tétouan,Tanger-Tétouan-Al Hoceïma,Nord,380787,93000
+ALH,Al Hoceïma,Al Hoceïma,Tanger-Tétouan-Al Hoceïma,Nord,395644,32000
+CAS,Casablanca,Casablanca,Casablanca-Settat,Centre,3359818,20000
+MOH,Mohammedia,Mohammedia,Casablanca-Settat,Centre,208612,28800
+SET,Settat,Settat,Casablanca-Settat,Centre,142250,26000
+RBT,Rabat,Rabat,Rabat-Salé-Kénitra,Centre,577827,10000
+SLA,Salé,Salé,Rabat-Salé-Kénitra,Centre,982163,11000
+KNT,Kénitra,Kénitra,Rabat-Salé-Kénitra,Centre,431282,14000
+FES,Fès,Fès,Fès-Meknès,Centre,1150131,30000
+MEK,Meknès,Meknès,Fès-Meknès,Centre,632079,50000
+MRK,Marrakech,Marrakech,Marrakech-Safi,Sud,928850,40000
+SFI,Safi,Safi,Marrakech-Safi,Sud,308508,46000
+AGD,Agadir,Agadir-Ida Ou Tanane,Souss-Massa,Sud,421844,80000
+OUJ,Oujda,Oujda-Angad,L'Oriental,Est,494252,60000
+NAD,Nador,Nador,L'Oriental,Est,161726,62000
+BNM,Béni Mellal,Béni Mellal,Béni Mellal-Khénifra,Centre,192676,23000
+ERR,Errachidia,Errachidia,Drâa-Tafilalet,Sud,92374,52000
+LAY,Laâyoune,Laâyoune,Laâyoune-Sakia El Hamra,Sud,217732,70000
+DAK,Dakhla,Oued Ed-Dahab,Dakhla-Oued Ed-Dahab,Sud,106277,73000
+TAZ,Taza,Taza,Fès-Meknès,Centre,148406,35000
+KHM,Khémisset,Khémisset,Rabat-Salé-Kénitra,Centre,131542,15000
+ELJ,El Jadida,El Jadida,Casablanca-Settat,Centre,194934,24000
+GUE,Guelmim,Guelmim,Guelmim-Oued Noun,Sud,118318,81000
+OUA,Ouarzazate,Ouarzazate,Drâa-Tafilalet,Sud,71067,45000
+TAN,Tan-Tan,Tan-Tan,Guelmim-Oued Noun,Sud,73209,82000
+KHO,Khouribga,Khouribga,Béni Mellal-Khénifra,Centre,196196,25000
+LRK,Larache,Larache,Tanger-Tétouan-Al Hoceïma,Nord,125008,92000
+CHF,Chefchaouen,Chefchaouen,Tanger-Tétouan-Al Hoceïma,Nord,42786,91000
+IFR,Ifrane,Ifrane,Fès-Meknès,Centre,33873,53000
