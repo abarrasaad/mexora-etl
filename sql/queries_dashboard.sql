@@ -1,5 +1,5 @@
 -- =============================================================
--- ZARA COMMERCE ANALYTICS — Requêtes Dashboard Metabase
+-- Mexora ANALYTICS — Requêtes Dashboard Metabase
 -- Fichier : queries_dashboard.sql
 -- Description : 5 requêtes analytiques pour le dashboard décisionnel
 -- =============================================================
@@ -19,7 +19,7 @@ SELECT
     SUM(ca_ttc)            AS ca_total,
     SUM(nb_commandes)      AS nb_commandes,
     SUM(nb_clients_actifs) AS nb_clients
-FROM reporting_zara.mv_ca_mensuel
+FROM reporting_mexora.mv_ca_mensuel
 GROUP BY annee, mois, libelle_mois, region_admin
 ORDER BY annee, mois;
 
@@ -37,10 +37,10 @@ SELECT
     p.categorie,
     SUM(f.quantite_vendue) AS qte_totale,
     SUM(f.montant_ttc)     AS ca_total
-FROM dwh_zara.fait_ventes f
-JOIN dwh_zara.dim_temps   t ON f.id_date    = t.id_date
-JOIN dwh_zara.dim_produit p ON f.id_produit = p.id_produit_sk
-JOIN dwh_zara.dim_region  r ON f.id_region  = r.id_region
+FROM dwh_mexora.fait_ventes f
+JOIN dwh_mexora.dim_temps   t ON f.id_date    = t.id_date
+JOIN dwh_mexora.dim_produit p ON f.id_produit = p.id_produit_sk
+JOIN dwh_mexora.dim_region  r ON f.id_region  = r.id_region
 WHERE r.ville           = 'Tanger'
   AND f.statut_commande = 'livré'
   AND p.est_actif       = TRUE
@@ -59,8 +59,8 @@ SELECT
     COUNT(DISTINCT f.id_vente)                                           AS nb_commandes,
     ROUND(SUM(f.montant_ttc) / NULLIF(COUNT(DISTINCT f.id_vente), 0), 2) AS panier_moyen,
     ROUND(SUM(f.montant_ttc), 2)                                         AS ca_total
-FROM dwh_zara.fait_ventes f
-JOIN dwh_zara.dim_client c ON f.id_client = c.id_client_sk
+FROM dwh_mexora.fait_ventes f
+JOIN dwh_mexora.dim_client c ON f.id_client = c.id_client_sk
 WHERE f.statut_commande = 'livré'
   AND c.est_actif       = TRUE
 GROUP BY c.segment_client
@@ -80,8 +80,8 @@ SELECT
         COUNT(*) FILTER (WHERE f.statut_commande = 'retourné') * 100.0
         / NULLIF(COUNT(*), 0), 2
     )                                                       AS taux_retour_pct
-FROM dwh_zara.fait_ventes f
-JOIN dwh_zara.dim_produit p ON f.id_produit = p.id_produit_sk
+FROM dwh_mexora.fait_ventes f
+JOIN dwh_mexora.dim_produit p ON f.id_produit = p.id_produit_sk
 WHERE p.est_actif = TRUE
 GROUP BY p.categorie
 ORDER BY taux_retour_pct DESC;
@@ -101,9 +101,9 @@ SELECT
     ROUND(AVG(f.montant_ttc), 2)   AS panier_moyen,
     ROUND(SUM(f.montant_ttc), 2)   AS ca_total,
     COUNT(DISTINCT f.id_vente)     AS nb_commandes
-FROM dwh_zara.fait_ventes f
-JOIN dwh_zara.dim_temps   t ON f.id_date    = t.id_date
-JOIN dwh_zara.dim_produit p ON f.id_produit = p.id_produit_sk
+FROM dwh_mexora.fait_ventes f
+JOIN dwh_mexora.dim_temps   t ON f.id_date    = t.id_date
+JOIN dwh_mexora.dim_produit p ON f.id_produit = p.id_produit_sk
 WHERE p.categorie       = 'Alimentation'
   AND f.statut_commande = 'livré'
 GROUP BY t.periode_ramadan
