@@ -1,5 +1,5 @@
 -- =============================================================
--- Mexora ANALYTICS — Requêtes Dashboard Metabase
+-- Mexora ETL — Requêtes Dashboard Metabase
 -- Fichier : queries_dashboard.sql
 -- Description : 5 requêtes analytiques pour le dashboard décisionnel
 -- =============================================================
@@ -109,6 +109,4 @@ WHERE p.categorie       = 'Alimentation'
 GROUP BY t.periode_ramadan
 ORDER BY t.periode_ramadan DESC;
 
--- =============================================================
--- FIN DU SCRIPT queries_dashboard.sql
--- =============================================================
+
